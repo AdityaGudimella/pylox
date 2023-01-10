@@ -1,0 +1,12 @@
+{
+    "exclude": [
+        ".history/",
+        ".vscode-server/extensions/",
+        "stubs/",
+        ".trunk/"
+    ],
+    "reportUnknownArgumentType": false,
+    "reportUnknownMemberType": false,
+    "stubPath": "./stubs/",
+    "typeCheckingMode": "strict"
+}

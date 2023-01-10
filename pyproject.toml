@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "pylox"
+version = "0.1.0"
+description = ""
+authors = ["Adi Gudimella <adgudime@microsoft.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+typer = "^0.7.0"
+rich = "^13.0.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.scripts]
+pylox = "pylox.cli:app"
