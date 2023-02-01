@@ -3,19 +3,32 @@ from pathlib import Path
 import attrs
 import rich
 
+from pylox.errors import Errors
+from pylox.nodes import Stmt
+from pylox.parser import Parser
 from pylox.token import Token
 
 
 @attrs.define()
-class Lox:
+class Program:
     source: str
-    has_error: bool = attrs.field(default=False)
+
+    errors: Errors = attrs.field(init=False, default=None)
+    parser: Parser = attrs.field(init=False, default=None)
 
     @classmethod
-    def from_path(cls, path: str) -> "Lox":
+    def from_path(cls, path: str) -> "Program":
         """Load a Lox script from a path."""
         source = Path(path).read_text()
-        return Lox(source)
+        return Program(source)
+
+    def __attrs_post_init__(self):
+        self.errors = Errors()
+        self.parser = Parser.from_source(self.source, errors=self.errors)
+
+    def parse(self) -> list[Stmt]:
+        """Parse a Lox script."""
+        return self.parser.parse()
 
     def run(self):
         """Run a Lox script."""
