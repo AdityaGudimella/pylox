@@ -1,1 +1,1 @@
-__version__ = '0.1.0'
+"""Version 2 of PyLox."""
